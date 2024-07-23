@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+{% block 'content' %}
+<div class="container-fluid bg-primary text-center p-5">
+    <h2 class="text-center text-white">Records</h2>
+    <p class="text-white text-center">{{user.first_name}}</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <input type="search" name="name" placeholder="Type Your Name">
+        <input type="search" name="city" placeholder="Type Your City">
+        <input type="submit" value="search" class="btn btn-success">
+        <a href="display" class="btn btn-warning">Show all</a>
+    </form>
+</div>
+
+<div class="container">
+    <a href="logout" class="btn btn-danger" style="float: right">Logout</a>
+</div>
+
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead class="bg-success bg-warning">
+            <tr>
+                <th>Pic</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in data %}
+            <tr>
+                <td><img src={{x.Pic.url}} width="100px" height="100px"></td>
+                <td>{{x.Name}}</td>
+                <td>{{x.EmailId}}</td>
+                <td>{{x.City}}</td>
+                <td>{{x.Message}}</td>
+                <td>{{x.Enquiry_date}}</td>
+                <td>
+                    <a href="delete/{{x.id}}" class="btn btn-danger">Delete</a>
+                    <a href="edit/{{x.id}}" class="btn btn-info">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

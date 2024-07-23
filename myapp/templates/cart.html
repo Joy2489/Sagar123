@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+<div class="container-fluid bg-primary text-center p-5">
+    <h2 class="text-white">My cart</h2>
+</div>
+
+<section class="bg-light py-5">
+<div class="container">
+    <div class="row">
+    <div class="col-xl-8 col-lg-8 mb-2">
+        <table class="table table-bordered">
+        <thead>
+            <th>Select Items</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Action</th>
+            <th>Status</th>
+        </thead>
+        <tbody>
+            {% for x in cart %}
+                <tr>
+                    <td>
+                        <input type="checkbox" name="productid" value="13" checked>
+                    </td>
+                    <td>
+                        <img src="{{x.pid.Image.url}}" width="100px" height="100px"><br>{{x.pid.Producttitle}}
+                    </td>
+
+                    <td id="Price{{x.id}}">{{x.pid.salesprice}}</td>
+
+                    <td>
+                        <form method="POST" action="updatecart/{{x.id}}">
+                            {% csrf_token %}
+                        <input id="Quantity{{x.id}}" type="number" name="Quantity" value="{{x.Quantity}}">
+                        <input type="submit" value="Apply" class="btn btn-success">
+                        </form>
+                    </td>
+                    
+                    <td id="netprice{{x.id}}"></td>
+
+                    <td>
+                        <a href="deletecart/{{x.id}}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+
+                <script>
+                    var price=document.getElementById('Price{{x.id}}').innerHTML;
+                    var Quantity=document.getElementById('Quantity{{x.id}}').value;
+                    document.getElementById('netprice{{x.id}}').innerHTML=
+                    parseFloat(price)*parseInt(Quantity)
+                </script>
+            {% endfor %}
+            <tr>
+                <th colspan="3" style="text-align: right;">Total Amount</td>
+                <td colspan="2" style="text-align: right;"><i class="fa-solid fa-indian-rupee-sign"></i>{{total}}</td>
+            </tr>
+            <tr align="right">
+                <td colspan="5">
+                    <a href="checkout" class="btn btn-primary">
+                        Procced To Checkout
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+    <div class="col-xl-4 col-lg-4 col-12">
+    </div>
+    </div>
+</div>
+</section>
+{% endblock %}

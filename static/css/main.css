@@ -1,0 +1,104 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: "Montserrat", sans-serif; 
+}  
+.banner{
+    display: flex;
+    height: 300px;
+}
+.mainheading{
+    text-decoration: underline;
+}
+.logo{
+    width: 140px;
+    height: 40px;
+}
+.navbar{
+    height: 90px;
+}
+.nav-item a{
+    color: whitesmoke !important; 
+    margin-left: 20px;
+    text-shadow: black;
+    font-size: large;
+}
+.dropdown-item{
+    text-decoration: black;
+}
+#billingboard{
+    border: 2px solid black ;
+    border-left:0 ;
+    border-right:0 ;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: bolder;
+}
+#billingboard{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: bolder;
+}
+#billingboards{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: bolder;
+}
+.checksummary{
+    text-align: center;
+    border: 2px solid black;
+    background-color: lightblue;
+}
+#namehead{
+    font-weight: bold;
+}
+#logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px; 
+}
+.search{
+    width: 280px;
+    height: 50px !important;
+    padding: 10px;
+}
+#logo :hover{
+    border: 5px solid rgba(130, 245, 224, 0.94);
+}
+.icon {
+    position: relative;
+    top: 30px;
+    float: right;
+    padding-right: 20px;
+    left: auto;
+}
+.search{
+    width: 280px;
+    height: 50px !important;
+    padding: 10px;
+  }
+footer{
+    background-color: black;
+    color: white;
+    padding: 20px 0;
+}
+.footer-container{
+    display: flex;
+    justify-content: space-around;
+}
+.footer-section{
+    flex: 1;
+    margin: 0 20px;
+}
+.footer-section h3{
+    color: yellow;
+    font-size: 20px;
+}
+.footer-section ul li a{
+    list-style-type: none;
+    padding: 0;
+}
+.footer-section ul li:hover{
+    color: yellow;
+}
+.social-media{
+    padding: 0;
+}

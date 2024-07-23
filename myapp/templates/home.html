@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+<style>
+  .slidercontent{
+    display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh"
+  }
+  .carousel-item{
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .carousel-item img{
+    height: 400px;
+  }
+</style>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+    <div class="carousel-inner">
+      {% for x in sliderdata %}
+      <div class="carousel-item {{x.isactive}}" style='background-image: url({{x.backgroundimage.url}})'>
+        <div class="row">
+          <div class="col-lg-6 slidercontent">
+            <h1>{{x.sliderheading}}</h1>
+            <p>{{x.slidercontent}}</p>
+          </div>
+          <div class="col-lg-6">
+              <img src="{{x.sliderimage.url}}" style="width: 100%">
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <section class="container">
+    <h2 class="text-success text-center mainheading">Welcome To Our Website</h2>
+  </section>
+
+  <div class="container mt-5 p-5">
+    <h2 class="text-center">Our Trending Courses</h2><hr>
+  <div class="owl-carousel owl-theme">
+    {% for x in category %}
+    <div class="item">
+      <a href="subcategory/{{x.id}}"><img src="{{x.Image.url}}" width="200" height="200"></a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="container mt-4 text-center">
+  <h2>Explore Our Courses</h2>
+  {% for x, y in subcat.items %}
+    <h3>{{x.Name}}</h3><hr>
+    <div class="row mb-5">
+    {% for s in y %}
+      <div class="col-lg-3 shadow p-2 mb-5">
+        <div class="card">
+          <div class="card-header">
+            <a href="product/{{s.id}}">
+            <img src="{{s.Image.url}}"width="200" height="200"></a>
+          </div>
+          <div class="card-body text-center">
+            <p><b>{{s.Name}}</b></p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    <a href="subcategory/{{x.id}}" class="btn btn-primary">View More</a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+  

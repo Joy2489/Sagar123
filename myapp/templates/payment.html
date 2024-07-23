@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+<form action="{% url 'complete-payment' %}" method="post" id="paymentform">
+    {% csrf_token %}
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="rzp_test_kUEq1LEQoodJIj"
+        data-amount="{{amount}}"
+        data-currency="INR"
+        data-name="MyShop"
+        data-description="Payment for Buying Books">
+    </script>
+</form>
+{% endblock %}

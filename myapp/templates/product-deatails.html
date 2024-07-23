@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% block 'content' %}
+<div class="container-fluid bg-primary text-center p-5">
+<h2 class="text-center text-white">{{product.ProductName}}</h2>
+    <p class="text-white text-center">{{product.Producttitle}}</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-12">
+            <img src="{{product.Image.url}}" class="img-fluid">
+        </div>
+        <div class="col-lg-9 col-md-8 col-12">
+            <h2>{{product.title}}</h2>
+            <h3><del>{{product.MRP}}</del><ins>{{product.salesprice}}</ins></h3>
+            <h4 style="color: green">{{product.Discount}} %off</h4>
+            <p>{{product.Description}}</p>
+      
+        <form method="post" action="../addtocart">
+            {% csrf_token %}
+            <input type="hidden" name="pid" value="{{product.id}}">
+            <input type="submit" class="btn btn-primary" value="Add To Cart">
+        </form>
+    </div>
+
+    <div class="col-xl-4 col-lg-4 col-12">
+        <h2 class="checksummary">Cart Summary</h2>
+        <div class="card shadow p-2 mb-2">
+           <table class="table table bordered">
+           <thead>
+            <tr>
+                <th>Orders</th>
+                <th>Unit Price</th>
+            </tr>
+            </thead>
+            </table>
+        </div>
+    </div>
+     </div>
+    </div>
+</div>
+{% endblock %}
